@@ -1,0 +1,22 @@
+<% provide(:page_title, "All The Posts") %>
+
+<p id="notice"><%= notice %></p>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+           <% @posts.each do |post| %>
+          <div class="post-preview">
+            <a href="<%= post_path(post) %>">
+              <h2 class="post-title">
+                <%= post.title %>
+              </h2>
+            </a>
+             <%= post.created_at.strftime("%b, %d %Y") %></p>
+          </div>
+          <hr>
+  <% end %>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>
