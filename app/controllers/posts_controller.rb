@@ -32,6 +32,11 @@ class PostsController < ApplicationController
       redirect_to @post
     end
   end
+
+  def destroy
+    @post.destroy
+    redirect_to '/'
+  end
   
   
   private

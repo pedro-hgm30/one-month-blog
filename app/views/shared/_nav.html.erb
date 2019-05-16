@@ -27,16 +27,30 @@
         <a class="nav-link" href="contact">Contact</a>
       </li>
 
+<% if author_signed_in? %>  
       <!-- Dropdown -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          <%= fa_icon "user" %></i> Profile </a>
+          <%= fa_icon "user" %></i> <%= current_author.name %> </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-          <a class="dropdown-item" href="/authors/sign_up">My account</a>
-          <a class="dropdown-item" href="#">Log out</a>
+          <a class="dropdown-item" href="/posts/new">Create a new Post</a>
+          <a class="dropdown-item" href="#">My Posts</a>
+          <%= link_to('Log out', destroy_author_session_path, method: :delete) %> 
         </div>
       </li>
+
+<% else %>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <%= fa_icon "user" %></i> Login</a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+        <%= link_to('Login', new_author_session_path)  %> 
+        <%= link_to('Register', new_author_registration_path)  %>
+        </div>
+      </li>     
+<% end %>
 
     </ul>
 </div>
