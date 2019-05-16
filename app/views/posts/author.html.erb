@@ -1,0 +1,26 @@
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+           <% @posts_by_author.find_each do |post| %>
+          <div class="post-preview">
+            <a href="<%= post_path(post) %>">
+              <h2 class="post-title">
+                <%= post.title%>
+              </h2>
+            </a>
+            <p class="post-meta">Posted by
+              <a href="<%= author_path(post.author.name) %>"><%= post.author.name %></a>
+             <%= post.created_at.strftime("%d, %b %Y") %></p>
+          </div>
+          <hr>
+  <% end %>
+
+  <%= will_paginate @posts_by_author, renderer: BootstrapPagination::Rails, previous_label: "Older", next_label: "Newer"%>
+          <!-- Pager -->
+          <div class="clearfix">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>

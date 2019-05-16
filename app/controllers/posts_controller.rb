@@ -37,6 +37,22 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to '/'
   end
+
+  def author
+    posts = Post.all
+    @author = params[:author]
+		@author_id = current_author.id
+		@posts_by_author = Post.where(["author_id = '%s'", @author_id]).paginate(page: params[:page], per_page: 5)
+		@authorvalid = []
+		posts.each do |post|
+			 @authorvalid << post.author.name
+		end
+		if (@authorvalid).include?(@author)
+			render :author
+		else
+			render file: "#{Rails.root}/public/404.html" , status: 404
+		end
+  end
   
   
   private

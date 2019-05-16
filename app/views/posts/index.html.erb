@@ -9,7 +9,9 @@
               <h2 class="post-title">
                 <%= post.title %>
               </h2>
-            </a>
+              </a>
+              <p class="post-meta">Posted by
+              <a href="<%= author_path(post.author.name) %>"><%= post.author.name %></a>
              <%= post.created_at.strftime("%b, %d %Y") %></p>
           </div>
           <hr>
