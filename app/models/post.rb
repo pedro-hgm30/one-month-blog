@@ -8,4 +8,7 @@ class Post < ApplicationRecord
     title_changed?
   end
 
+  def self.search(query)
+  	where("title like ? OR body like ?", "%#{query}%", "%#{query}%")
+  end
 end
