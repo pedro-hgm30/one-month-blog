@@ -1,17 +1,24 @@
 <% provide(:page_title, @post.title) %>
-<p>
-  <strong>Title:</strong><br>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Body:</strong><br>
-  <%= @post.body %>
-</p>
-
-<p>
-  <%= @post.author.name %>
-</p>
+  
+  <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1><%= @post.title %></h1>
+            <span class="meta">Posted by
+              <a href="<%= author_path(@post.author.name) %>"><%= @post.author.name %></a> <%= @post.created_at.strftime("%b %d, %Y") %></span>
+          </div>
+        </div>
+  </div>
+  
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p><%= @post.body.html_safe %></p>
+        </div>
+      </div>
+  </article>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

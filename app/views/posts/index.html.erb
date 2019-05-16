@@ -17,6 +17,5 @@
           <hr>
   <% end %>
 
-<br>
+<%= will_paginate @posts, class: "pagination, Page navigation example, page-item,justify-content-center", previous_label: "Newer", next_label: "Older"%>
 
-<%= link_to 'New Post', new_post_path %>

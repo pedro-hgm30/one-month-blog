@@ -15,12 +15,4 @@
           <hr>
   <% end %>
 
-  <%= will_paginate @posts_by_author, renderer: BootstrapPagination::Rails, previous_label: "Older", next_label: "Newer"%>
-          <!-- Pager -->
-          <div class="clearfix">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <hr>
+<%= will_paginate @posts_by_author, class: "pagination, Page navigation example, page-item,justify-content-center", previous_label: "Newer", next_label: "Older"%>
