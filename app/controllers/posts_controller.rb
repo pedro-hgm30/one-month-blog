@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_author!, only: [:new, :edit, :update, :destroy, :create] 
+
   before_action :set_post, only: [:show, :edit, :update, :destroy] 
   
   def index
@@ -44,10 +46,23 @@ class PostsController < ApplicationController
 
   def author
     posts = Post.all
+    
     @author = params[:author]
-		@author_id = current_author.id
-		@posts_by_author = Post.where(["author_id = '%s'", @author_id]).paginate(page: params[:page], per_page: 5)
-		@authorvalid = []
+    
+    #@author_search = Author.where(["author_name = '%s'", @author])
+    @posts_by_author = []
+    posts.each do |post|
+        if post.author.name == @author
+          @posts_by_author << post
+        end
+    end
+    @paginated_authors = @posts_by_author.paginate(page: params[:page], per_page: 5)
+    #.paginate(:page => params[:page], :per_page => 5)
+    #@author_id = Author.where(["author_id = '%s'", @author_search.id])
+    
+    #@posts_by_author = Post.where(["author_id = '%s'", @author_id]).paginate(page: params[:page], per_page: 5)
+  
+    @authorvalid = []
 		posts.each do |post|
 			 @authorvalid << post.author.name
 		end

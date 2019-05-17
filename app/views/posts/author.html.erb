@@ -1,7 +1,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-           <% @posts_by_author.find_each do |post| %>
+           <% @paginated_authors.each do |post| %>
           <div class="post-preview">
             <a href="<%= post_path(post) %>">
               <h2 class="post-title">
@@ -15,4 +15,4 @@
           <hr>
   <% end %>
 
-<%= will_paginate @posts_by_author, class: "pagination, Page navigation example, page-item,justify-content-center", previous_label: "Newer", next_label: "Older"%>
+<%= will_paginate @paginated_authors, class: "pagination, Page navigation example, page-item,justify-content-center", previous_label: "Newer", next_label: "Older"%>
