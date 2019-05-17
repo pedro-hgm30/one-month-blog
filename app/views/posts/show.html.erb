@@ -3,17 +3,15 @@
   <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="post-heading">
-            <h1><%= @post.title %></h1>
+            <h1 class="text-center"><%= @post.title %></h1>
             <span class="meta">Posted by
               <% if @post.author != nil %>
                 <a class="font-weight-bold dark-grey-text" href="<%= author_path(@post.author.name) %>"><%= @post.author.name %></a>
               <% else %>
                   <a class="font-weight-bold dark-grey-text" href="#"> This Author no longer exist </a>
               <% end %> <%= @post.created_at.strftime("%b %d, %Y") %></span>
-          </div>
         </div>
-  </div>
+  </div><br><br>
   
   <article>
     <div class="container">
@@ -22,17 +20,17 @@
           <p><%= @post.body.html_safe %></p>
         </div>
       </div>
-  </article>
+  </article><br><br>
 <% if author_signed_in? %>
   <% if @post.author != nil %>
     <% if current_author.name == @post.author.name %>
       <div class="form-group form-inline justify-content-center">
-        <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-primary btn-sm" %> | <%= button_to "Delete", post_path(@post), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-sm" %>
+        <%= button_to 'Edit', edit_post_path(@post), method: :get, class: "btn btn-primary btn-sm" %> | <%= button_to "Delete", post_path(@post), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-sm" %>
       </div>  
     <% end %>
   <% else %>
      <div class="form-group form-inline justify-content-center">
-        <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-primary btn-sm" %> | <%= button_to "Delete", post_path(@post), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-sm" %>
+        <%= button_to 'Edit', edit_post_path(@post), method: :get, class: "btn btn-primary btn-sm" %> | <%= button_to "Delete", post_path(@post), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-sm" %>
       </div>  
   <% end %>
 <% end %>

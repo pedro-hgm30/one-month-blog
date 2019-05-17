@@ -20,7 +20,7 @@
 	            <%= message %>
             </div>
           <% end %>
-            <!--ajeitar msg de erro-->
+            
           <%= form_for @post do |f| %>
             
             <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %><br />
@@ -28,7 +28,7 @@
             
             <%= f.text_area :body, :class => "tinymce", :rows => 20, :cols => 60 %><%= tinymce %><br />
             
-            <%= f.submit :submit, class: 'btn btn-info btn-rounded btn-sm z-depth-0 ' %>
+            <%= f.submit "Create", class: 'btn btn-primary btn-rounded btn-sm z-depth-0 ' %>
           <% end %>
 
 

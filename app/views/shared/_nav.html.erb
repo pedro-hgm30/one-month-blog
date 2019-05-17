@@ -33,12 +33,17 @@
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           <%= fa_icon "user" %></i> <%= current_author.name %> </a>
-        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-          <div class="dropdown-item"><%= link_to('New Post', new_post_path)  %></div>
-           <div class="dropdown-item"><%= link_to('My posts', author_path(current_author.name))  %></div>
-           <div class="dropdown-item"><%= link_to('My Account', edit_author_registration_path) %></div>
-           <div class="dropdown-item"><%= link_to('New Author', new_author_registration_path)  %></div>
-           <div class="dropdown-item"><%= link_to('Log out', destroy_author_session_path, method: :delete) %></div> 
+        <div class="dropdown-menu">
+          
+          <div class="text-center"><%= button_to('New Post', new_post_path, method: :get, class: 'col-sm-6 btn btn-elegant btn-sm')  %></div>
+           
+           <div class="text-center"><%= button_to('My posts', author_path(current_author.name), method: :get, class: 'col-sm-6 btn btn-elegant btn-sm')  %></div>
+           
+           <div class="text-center"><%= button_to('My Account', edit_author_registration_path, method: :get, class: 'col-sm-6 btn btn-elegant btn-sm') %></div>
+           
+           <div class="text-center"><%= button_to('New Author', new_author_registration_path, method: :get, class: 'col-sm-6 btn btn-elegant btn-sm')  %></div>
+           
+           <div class="text-center"><%= button_to('Log out', destroy_author_session_path, method: :delete, class: 'col-sm-6 btn btn-elegant btn-sm') %></div> 
         </div>
       </li>
 
