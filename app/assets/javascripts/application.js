@@ -14,6 +14,7 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require mdb
+//= require tinymce-jquery
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks

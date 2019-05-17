@@ -1,21 +1,26 @@
 <% provide(:page_title, "All Posts") %>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-           <% @posts.each do |post| %>
-          <div class="post-preview">
-            <a href="<%= post_path(post) %>">
-              <h2 class="post-title">
-                <%= post.title %>
-              </h2>
-              </a>
-              <p class="post-meta">Posted by
-              <a href="<%= author_path(post.author.name) %>"><%= post.author.name %></a>
-             <%= post.created_at.strftime("%b, %d %Y") %></p>
-          </div>
-          <hr>
-  <% end %>
 
-<%= will_paginate @posts, class: "pagination, Page navigation example, page-item,justify-content-center", previous_label: "Newer", next_label: "Older"%>
+
+<% @posts.each do |post| %>
+<br>
+<a href="<%= post_path(post) %>">
+<h2 class="font-weight-bold text-body">
+  <%= post.title %>
+</h2>
+</a>
+<h6>Posted by
+<% if post.author != nil %>
+  <a class="font-weight-bold dark-grey-text" href="<%= author_path(post.author.name) %>"><%= post.author.name %></a>
+<% else %>
+    <a class="font-weight-bold dark-grey-text" href="#"> This Author no longer exist </a>
+<% end %>
+<%= post.created_at.strftime("%b, %d %Y") %></h6>
+
+<hr>
+<% end %>
+
+<br>
+<%= will_paginate @posts, class: "font-weight-bold text-center pagination, ", previous_label: "Newer", next_label: "Older"%>
+<hr class="col-sm-2">
 

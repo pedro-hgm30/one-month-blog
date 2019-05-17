@@ -16,15 +16,19 @@
             </div>
 
           <% @post.errors.full_messages.each do |message| %>
-            <div class="alert alert-danger" role="alert">
+            <div class="alert alert-danger col-sm-3" role="alert">
 	            <%= message %>
             </div>
           <% end %>
             <!--ajeitar msg de erro-->
           <%= form_for @post do |f| %>
+            
             <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %><br />
-            <%= f.text_area :body, class: 'form-control md-textarea', placeholder: 'body' %><br />
-            <%= f.submit :submit, class: 'btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect' %>
+            <span>Body</span>
+            
+            <%= f.text_area :body, :class => "tinymce", :rows => 20, :cols => 60 %><%= tinymce %><br />
+            
+            <%= f.submit :submit, class: 'btn btn-info btn-rounded btn-sm z-depth-0 ' %>
           <% end %>
 
 

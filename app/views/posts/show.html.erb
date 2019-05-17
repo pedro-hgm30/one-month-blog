@@ -6,7 +6,11 @@
           <div class="post-heading">
             <h1><%= @post.title %></h1>
             <span class="meta">Posted by
-              <a href="<%= author_path(@post.author.name) %>"><%= @post.author.name %></a> <%= @post.created_at.strftime("%b %d, %Y") %></span>
+              <% if @post.author != nil %>
+                <a class="font-weight-bold dark-grey-text" href="<%= author_path(@post.author.name) %>"><%= @post.author.name %></a>
+              <% else %>
+                  <a class="font-weight-bold dark-grey-text" href="#"> This Author no longer exist </a>
+              <% end %> <%= @post.created_at.strftime("%b %d, %Y") %></span>
           </div>
         </div>
   </div>
@@ -20,9 +24,15 @@
       </div>
   </article>
 <% if author_signed_in? %>
-  <% if current_author.name == @post.author.name %>
-    <div class="form-group form-inline justify-content-center">
-      <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-primary btn-sm" %> | <%= button_to "Delete", post_path(@post), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-sm" %>
-    </div>  
+  <% if @post.author != nil %>
+    <% if current_author.name == @post.author.name %>
+      <div class="form-group form-inline justify-content-center">
+        <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-primary btn-sm" %> | <%= button_to "Delete", post_path(@post), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-sm" %>
+      </div>  
+    <% end %>
+  <% else %>
+     <div class="form-group form-inline justify-content-center">
+        <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-primary btn-sm" %> | <%= button_to "Delete", post_path(@post), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-sm" %>
+      </div>  
   <% end %>
 <% end %>

@@ -5,9 +5,9 @@ class PostsController < ApplicationController
   
   def index
     if params[:search]
-			@posts = Post.search(params[:search]).all.order('created_at desc').paginate(page: params[:page], per_page: 5)
+			@posts = Post.search(params[:search]).all.order('created_at desc').paginate(page: params[:page], per_page: 7)
 		else
-			@posts = Post.all.order('created_at desc').paginate(page: params[:page], per_page: 5)
+			@posts = Post.all.order('created_at desc').paginate(page: params[:page], per_page: 7)
 		end
   end
 

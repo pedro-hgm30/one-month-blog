@@ -43,6 +43,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'tinymce-rails'
 gem 'simple_form'
 #gem 'kaminari'
+gem 'tinymce-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
