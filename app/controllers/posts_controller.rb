@@ -19,9 +19,10 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.author_id = current_author.id 
     if @post.save
+      flash[:notice] = "#{@post.title} successfully posted!"
       redirect_to '/'
     else 
-      redirect_to '/posts/new'
+      render :new
     end
   end
 
@@ -33,6 +34,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
+      flash[:notice] = "#{@post.title} successfully updated!"
       redirect_to '/'
     else 
       redirect_to @post
