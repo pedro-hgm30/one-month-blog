@@ -54,9 +54,11 @@ class PostsController < ApplicationController
     #@author_search = Author.where(["author_name = '%s'", @author])
     @posts_by_author = []
     posts.each do |post|
+      if post.author != nil
         if post.author.name == @author
           @posts_by_author << post
         end
+      end
     end
     @paginated_authors = @posts_by_author.paginate(page: params[:page], per_page: 5)
     #.paginate(:page => params[:page], :per_page => 5)
@@ -65,8 +67,10 @@ class PostsController < ApplicationController
     #@posts_by_author = Post.where(["author_id = '%s'", @author_id]).paginate(page: params[:page], per_page: 5)
   
     @authorvalid = []
-		posts.each do |post|
-			 @authorvalid << post.author.name
+    posts.each do |post|
+      if post.author != nil
+       @authorvalid << post.author.name
+      end
 		end
 		if (@authorvalid).include?(@author)
 			render :author
