@@ -15,6 +15,7 @@
 //= require bootstrap-sprockets
 //= require mdb
 //= require tinymce-jquery
+//= require prism
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks

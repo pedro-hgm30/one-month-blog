@@ -1,6 +1,13 @@
 toolbar:
   - styleselect | bold italic | undo redo
-  - image | link
+  - image media | link | charmap | numlist bullist | codesample | fullscreen preview
 plugins:
   - image
   - link
+  - charmap
+  - lists
+  - advlist
+  - codesample
+  - fullscreen
+  - media
+  - preview

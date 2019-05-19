@@ -4,20 +4,21 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
             <h1 class="text-center"><%= @post.title %></h1>
-            <span class="meta">Posted by
+            <h6 class="text-center">Posted by
               <% if @post.author != nil %>
                 <a class="font-weight-bold dark-grey-text" href="<%= author_path(@post.author.name) %>"><%= @post.author.name %></a>
               <% else %>
                   <a class="font-weight-bold dark-grey-text" href="#"> This Author no longer exist </a>
-              <% end %> <%= @post.created_at.strftime("%b %d, %Y") %></span>
+              <% end %> <%= @post.created_at.strftime("%b %d, %Y") %>
+            </h6>
         </div>
-  </div><br><br>
+  </div><br>
   
   <article>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <p><%= @post.body.html_safe %></p>
+          <div><%= @post.body.html_safe %></div>
         </div>
       </div>
   </article><br><br>
