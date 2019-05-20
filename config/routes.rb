@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   get 'contact', to: 'pages#contact', as: 'contact'
   get 'themonth', to: 'months#themonth', as: 'themonth'
   get ':author', to: 'posts#author', as: 'author'
+  get 'author/manage', to: 'authors#manage'
+  match 'authors/:id' => 'authors#destroy', :via => :delete, :as => :admin_destroy_author
   root 'posts#index'
 end

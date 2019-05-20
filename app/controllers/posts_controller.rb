@@ -78,6 +78,8 @@ class PostsController < ApplicationController
 			render file: "#{Rails.root}/public/404.html" , status: 404
 		end
   end
+
+
   
   
   private

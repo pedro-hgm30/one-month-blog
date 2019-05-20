@@ -1,0 +1,16 @@
+<% provide(:page_title, "All Authors") %>
+
+<% @authors.each do |author| %>
+   
+   <% if author.admin == true %>
+      <div class="form-group">
+         <%= author.name + " (Admin)" %>
+      </div>
+   <% else %>
+      <div class="form-group">   
+         <%= author.name %>
+         <%= button_to "Delete", admin_destroy_author_path(author), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-sm btn-danger" %>
+      </div>
+   <% end %>
+   
+<% end %>

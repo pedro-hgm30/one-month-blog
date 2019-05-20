@@ -40,8 +40,10 @@
            <div class="text-center"><%= button_to('My posts', author_path(current_author.name), method: :get, class: 'col-sm-6 btn btn-elegant btn-sm')  %></div>
            
            <div class="text-center"><%= button_to('My Account', edit_author_registration_path, method: :get, class: 'col-sm-6 btn btn-elegant btn-sm') %></div>
-           
-           <div class="text-center"><%= button_to('New Author', new_author_registration_path, method: :get, class: 'col-sm-6 btn btn-elegant btn-sm')  %></div>
+           <% if current_author.admin == true %>
+            <div class="text-center"><%= button_to('New Author', new_author_registration_path, method: :get, class: 'col-sm-6 btn btn-elegant btn-sm')  %></div>
+            <div class="text-center"><%= button_to('Manage Authors', author_manage_path, method: :get, class: 'col-sm-6 btn btn-elegant btn-sm')  %></div>
+           <% end %>
            
            <div class="text-center"><%= button_to('Log out', destroy_author_session_path, method: :delete, class: 'col-sm-6 btn btn-elegant btn-sm') %></div> 
         </div>
