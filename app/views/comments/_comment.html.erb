@@ -1,0 +1,13 @@
+
+<p>
+<h5 class="font-weight-bold mt-0">
+  <a href="#"><%= comment.user.name %></a>
+  <a href="" class="pull-right">
+    <i class="fas fa-reply"></i>
+  </a>
+</h5>
+
+<%= comment.body %>
+<%= button_to 'Delete', [comment.post, comment],
+                  method: :delete, class: "btn btn-sm btn-danger", data: { confirm: 'Are you sure?' } %>
+</p>

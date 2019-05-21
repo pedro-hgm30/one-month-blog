@@ -49,13 +49,33 @@
         </div>
       </li>
 
+<% elsif user_signed_in? %>     
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <%= fa_icon "user" %></i> <%= current_user.name %> </a>
+        <div class="dropdown-menu">
+        
+           <div class="text-center"><%= button_to('My Account', edit_user_registration_path, method: :get, class: 'col-sm-6 btn btn-elegant btn-sm') %></div>
+           
+           <div class="text-center"><%= button_to('Log out', destroy_user_session_path, method: :delete, class: 'col-sm-6 btn btn-elegant btn-sm') %></div> 
+        </div>
+      </li>
+
 <% else %>
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          <%= fa_icon "user" %></i> Login</a>
-        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-          <div class="dropdown-item"> <%= link_to('Login', new_author_session_path)  %></div> 
+          <%= fa_icon "user" %></i> Join us</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink-4">
+          
+          <div class="dropdown-item"> <%= link_to("Authors", new_author_session_path)  %></div> 
+        
+          <div class="dropdown-item"> <%= link_to("Users", new_user_session_path)  %></div> 
+
+          <div class="dropdown-item"> <%= link_to("Sign Up", new_user_registration_path)  %></div> 
+
         </div>
       </li>     
 <% end %>

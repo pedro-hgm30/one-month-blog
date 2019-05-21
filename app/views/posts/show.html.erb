@@ -30,8 +30,47 @@
       </div>  
     <% end %>
   <% else %>
+    <% if current_author.admin == true %>
      <div class="form-group form-inline justify-content-center">
         <%= button_to 'Edit', edit_post_path(@post), method: :get, class: "btn btn-primary btn-sm" %> | <%= button_to "Delete", post_path(@post), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger btn-sm" %>
       </div>  
+    <% end %>
   <% end %>
 <% end %>
+
+<!--Section: Comments-->
+<section class="my-5">
+
+  <!-- Card header -->
+  <div class="card-header border-0 font-weight-bold"><%= @post.comments.count %> Comments</div>
+
+  <div class="d-block d-md-flex mt-4">
+    <div class="media-body text-center text-md-left ml-md-3 ml-0">
+        <%  @post.comments.each do |comment| %>
+          <h5 class="font-weight-bold mt-0">
+            <a href="#"><%= comment.user.name %></a>
+            <a href="" class="pull-right">
+            <%= fa_icon "reply" %>
+            </a>
+          </h5>
+          <div class="form-group">
+          <%= comment.body %>
+          <%= button_to 'Delete', [comment.post, comment],
+                  method: :delete, class: "btn btn-sm btn-danger", data: { confirm: 'Are you sure?' } %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+
+  <!-- Quick Reply -->
+  <div class="form-group mt-4">
+      <%= form_for ([@post, @post.comments.build]) do |f| %>
+      
+      <%= f.text_area :body, class:"form-control z-depth-1", placeholder: "Your Comment" %><br />
+      
+      <%= f.submit "Comment", class: 'btn btn-primary btn-rounded btn-sm z-depth-0 ' %>
+    <% end %>
+  </div>
+
+</section>
+<!--Section: Comments-->

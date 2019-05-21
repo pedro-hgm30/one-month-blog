@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users
   devise_for :authors,
     controllers: {:registrations => "registrations"}
   as :author do
     get "/register", to: "registrations#new", as: "register"
   end
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
   get 'about', to: 'pages#about', as: 'about'
   get 'contact', to: 'pages#contact', as: 'contact'
   get 'themonth', to: 'months#themonth', as: 'themonth'

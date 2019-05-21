@@ -30,6 +30,12 @@ class PostsController < ApplicationController
   end
 
   def edit
+    if current_author.admin == true || current_author.name == @post.author.name
+      render :edit
+    else 
+      flash[:alert] = "You're not the owner of this post"
+      redirect_to root_path
+    end
   end
 
   def update
