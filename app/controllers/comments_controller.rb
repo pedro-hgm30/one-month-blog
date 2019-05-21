@@ -8,16 +8,16 @@ class CommentsController < ApplicationController
     
     @comment = @post.comments.new(params[:comment].permit(:body))
     
-   # if author_signed_in?
-     # @comment.author_id = current_author.id 
-    if user_signed_in?
-    @comment.user_id = current_user.id 
+    if author_signed_in?
+      @comment.author_id = current_author.id 
+    elsif user_signed_in?
+      @comment.user_id = current_user.id 
     else 
       flash[:alert] = "You must be signed in to comment!"
       redirect_to post_path(@post) and return
     end
     
-    if @comment.save
+    if @comment.save!
       flash[:notice] = "Comment successfuly posted"
       redirect_to post_path(@post) and return
     else

@@ -48,7 +48,13 @@
     <div class="media-body text-center text-md-left ml-md-3 ml-0">
         <%  @post.comments.each do |comment| %>
           <h5 class="font-weight-bold mt-0">
+          <% if comment.user == nil && comment.author == nil %>
+            <a href="#"> Anonymous </a>
+          <% elsif comment.user != nil %>
             <a href="#"><%= comment.user.name %></a>
+          <% elsif comment.author != nil %>
+            <a href="#"><%= comment.author.name %></a>
+          <% end %>
             <a href="" class="pull-right">
             <%= fa_icon "reply" %>
             </a>
@@ -71,6 +77,5 @@
       <%= f.submit "Comment", class: 'btn btn-primary btn-rounded btn-sm z-depth-0 ' %>
     <% end %>
   </div>
-
 </section>
 <!--Section: Comments-->
