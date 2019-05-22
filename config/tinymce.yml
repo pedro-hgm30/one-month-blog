@@ -1,6 +1,6 @@
 toolbar:
   - styleselect | bold italic | undo redo
-  - image media | link | charmap | numlist bullist | codesample | fullscreen preview
+  - image media | link | charmap | numlist bullist | codesample | fullscreen preview nonbreaking
 plugins:
   - image
   - link
@@ -11,3 +11,5 @@ plugins:
   - fullscreen
   - media
   - preview
+  - nonbreaking
+nonbreaking_force_tab : true
