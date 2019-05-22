@@ -11,10 +11,10 @@
 // about supported directives.
 //
 //= require jquery3
+//= require tinymce-jquery
 //= require popper
 //= require bootstrap-sprockets
 //= require mdb
-//= require tinymce
 //= require prism
 //= require rails-ujs
 //= require activestorage
