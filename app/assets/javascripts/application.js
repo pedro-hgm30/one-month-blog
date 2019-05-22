@@ -14,7 +14,7 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require mdb
-//= require tinymce-jquery
+//= require tinymce
 //= require prism
 //= require rails-ujs
 //= require activestorage
