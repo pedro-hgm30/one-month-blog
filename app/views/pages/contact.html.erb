@@ -1,0 +1,22 @@
+<% provide(:page_title, "Contact") %>
+
+<!-- Card -->
+<div class="card">
+
+  <h5 class="card-header elegant-color white-text text-center py-4">
+    <strong>
+      <h3 class="text-light"><%= fa_icon "envelope-open" %> Contact Me </h3>
+    </strong>
+  </h5>
+
+  <!--Card content-->
+  <div class="card-body px-lg-5 text-center">
+    <h5 class="card-title pt-2"><strong>Have questions? I have answers.</strong></h5>
+    <p>Please don't forget to include your name and email address!</p>
+    <h4 class="">
+      <%= mail_to "pedro.hgm30@gmail.com", "Get in Touch", subject: "Hi! Please include your name and email address", class: "text-body" %>
+      <%= fa_icon "paper-plane", left: true %></h4>
+  </div>
+
+</div>
+<!-- Card -->

@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   end
   get 'about', to: 'pages#about', as: 'about'
   get 'contact', to: 'pages#contact', as: 'contact'
-  get 'themonth', to: 'months#themonth', as: 'themonth'
   get ':author', to: 'posts#author', as: 'author'
   get 'author/manage', to: 'authors#manage'
   match 'authors/:id' => 'authors#destroy', :via => :delete, :as => :admin_destroy_author
