@@ -26,7 +26,7 @@
             <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %><br />
             <span>Body</span>
             
-            <%= f.text_area :body, :class => "tinymce", :rows => 20, :cols => 60 %><%= tinymce %><br />
+            <%= f.text_area :body, :class => "tinymce", :rows => 20, :cols => 60 %><%= tinymce_assets  %><br />
             
             <%= f.submit "Create", class: 'btn btn-primary btn-rounded btn-sm z-depth-0 ' %>
           <% end %>
