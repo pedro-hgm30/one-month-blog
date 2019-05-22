@@ -61,16 +61,32 @@
           </h6>
           <div class="form-group">
           <%= comment.body %>
-          <% if user_signed_in? || author_signed_in? %>
-            <% if (comment.user || comment.author) == (current_user || current_author) %>
-              <%= button_to 'Delete', [comment.post, comment],
-                  method: :delete, class: "btn btn-sm btn-danger", data: { confirm: 'Are you sure?' } %>
-            <% elsif current_author.admin == true %>
-              <%= button_to 'Delete', [comment.post, comment],
-                  method: :delete, class: "btn btn-sm btn-danger", data: { confirm: 'Are you sure?' } %>
+            <% if user_signed_in? %>
+              
+              <% if comment.user == current_user %>
+                
+                <%= button_to 'Delete', [comment.post, comment],
+                    method: :delete, class: "btn btn-sm btn-danger", data: { confirm: 'Are you sure?' } %>
+              
+              <% end %>
+              
+            <% elsif author_signed_in?   %>
+                
+                <% if comment.author == current_author %>
+                
+                <%= button_to 'Delete', [comment.post, comment],
+                    method: :delete, class: "btn btn-sm btn-danger", data: { confirm: 'Are you sure?' } %>
+              
+                <% elsif current_author.admin == true %>
+
+                <%= button_to 'Delete', [comment.post, comment],
+                    method: :delete, class: "btn btn-sm btn-danger", data: { confirm: 'Are you sure?' } %>
+
+              <% end %>
+            
             <% end %>
-          <% end %>
-          </div>
+            
+            </div>
         <% end %>
     </div>
   </div>
