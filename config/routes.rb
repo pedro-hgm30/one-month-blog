@@ -15,3 +15,4 @@ Rails.application.routes.draw do
   match 'authors/:id' => 'authors#destroy', :via => :delete, :as => :admin_destroy_author
   root 'posts#index'
 end
+ 
