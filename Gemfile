@@ -39,11 +39,9 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'friendly_id', '~> 5.2.4' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 gem 'devise'
 gem 'will_paginate', '~> 3.1.0'
-#gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.2'
 gem 'tinymce-rails'
 gem 'simple_form'
-#gem 'kaminari'
-gem 'tinymce-rails'
+gem 'gravatar_image_tag'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

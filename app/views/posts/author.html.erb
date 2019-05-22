@@ -1,5 +1,30 @@
 <% provide(:page_title, "#{@author}") %>
 
+<!--Section: Author Box-->
+<section class="my-5">
+
+  <!-- Card header -->
+  <div class="card-header border-0 font-weight-bold d-flex justify-content-between">
+    <p class="mr-4 mb-0">About the author</p>
+    <ul class="list-unstyled list-inline mb-0">
+      <li class="list-inline-item"><div class="mr-3"><%= fa_icon 'envelope' %> <%= mail_to @post_author.email, "Send Message", subject: "Hi! Please include your name and email address", class: "text-body" %></div></li>
+    </ul>
+  </div>
+
+  <div class="media mt-4 px-1">
+    <div class=" d-flex z-depth-1 mr-3"><%= gravatar_image_tag(@post_author.email.gsub('spam', @author ), :alt => @author) %> </div>
+    <div class="media-body">
+      <h5 class="font-weight-bold mt-0">
+        <%= @author %>
+      </h5>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod consectetur accusamus velit nostrum et
+      magnam.
+    </div>
+  </div>
+
+</section>
+<!--Section: Author Box-->
+
 <% @paginated_authors.each do |post| %>
 <br>
 <a href="<%= post_path(post) %>">
