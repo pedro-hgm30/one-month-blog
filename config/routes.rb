@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
-  get 'about', to: 'pages#about', as: 'about'
-  get 'contact', to: 'pages#contact', as: 'contact'
+  get 'about', to: 'posts#about', as: 'about'
+  get 'contact', to: 'posts#contact', as: 'contact'
   get ':author', to: 'posts#author', as: 'author'
   get 'author/manage', to: 'authors#manage'
   match 'authors/:id' => 'authors#destroy', :via => :delete, :as => :admin_destroy_author
