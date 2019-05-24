@@ -1,23 +1,11 @@
 class CommentsController < ApplicationController
   
-
+  before_action :set_post
   
+  before_action :set_comment, :comment_permitted?, only: [:create]
+
   def create
-    
-    @post = Post.friendly.find(params[:post_id])
-    
-    @comment = @post.comments.new(params[:comment].permit(:body))
-    
-    if author_signed_in?
-      @comment.author_id = current_author.id 
-    elsif user_signed_in?
-      @comment.user_id = current_user.id 
-    else 
-      flash[:alert] = "You must be signed in to comment!"
-      redirect_to post_path(@post) and return
-    end
-    
-    if @comment.save!
+    if @comment.save
       flash[:notice] = "Comment successfuly posted"
       redirect_to post_path(@post) and return
     else
@@ -27,23 +15,31 @@ class CommentsController < ApplicationController
   end
   
 	def destroy
-		@post = Post.friendly.find(params[:post_id])
 		@comment = @post.comments.find(params[:id])
 		@comment.destroy
 		redirect_to post_path(@post)
 	end
   
-  
-  
   private
-  # Use callbacks to share common setup or constraints between actions.
+  
+  def set_post
+    @post = Post.friendly.find(params[:post_id])
+  end
+  
   def set_comment
-    @comment = Comment.friendly.find(params[:id])
+    @comment = @post.comments.new(params[:comment].permit(:body))
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def comment_params
-    params.require(:comment).permit(:body)
+
+  def comment_permitted?
+    if author_signed_in?
+      @comment.author_id = current_author.id 
+    elsif user_signed_in?
+      @comment.user_id = current_user.id 
+    else 
+      flash[:alert] = "You must be signed in to comment!"
+      redirect_to post_path(@post) and return
+    end
   end
 
 end
