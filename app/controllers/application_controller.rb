@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
-    before_action :configure_permitted_parameters, if: :devise_controller?
+  
+  # this is devise stuff
+  # I'm using my own controller in some parts of the code
+  # and I have to specify this for devise
+
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
 

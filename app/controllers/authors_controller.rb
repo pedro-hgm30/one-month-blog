@@ -12,6 +12,8 @@ class AuthorsController < ApplicationController
     end
   end
 
+  # this method guarantees that the actions above
+  # will only be performed by admin authors 
   private
   def redirect_unless_admin
     unless current_author.try(:admin?)
