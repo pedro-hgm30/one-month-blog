@@ -19,8 +19,11 @@ By [Pedro Henrique](pedro.hgm30@gmail.com)
 ## Disclosure
 
 These are the technologies that I used on the project: HTML, CSS, JS, and Ruby on Rails.
+
 The ruby version is `ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-linux-gnu]`
+
 The rails version is `Rails 5.2.3`
+
 Node is also required to run Rails, the version that I'm using is `v10.15.3`
 
 ## Requirements
