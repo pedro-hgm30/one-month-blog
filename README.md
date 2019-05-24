@@ -1,6 +1,6 @@
 # Blog on Rails
 
-By [Pedro Henrique](pedro.hgm30@gmail.com)
+By [Pedro Henrique](https://www.linkedin.com/in/pedro-henrique-gonçalves-166605186/)
 
 [pedro-hgm30.github.com](https://github.com/pedro-hgm30)
 
