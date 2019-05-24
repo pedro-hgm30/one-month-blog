@@ -18,7 +18,7 @@ By [Pedro Henrique](https://www.linkedin.com/in/pedro-henrique-gonçalves-166605
 
 ## Disclosure
 
-These are the technologies that I used on the project: HTML, CSS, JS, and Ruby on Rails.
+These are the technologies that I used on the project: HTML, CSS, JS, MDB (material design bootstrap) and Ruby on Rails.
 
 The ruby version is `ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-linux-gnu]`
 
