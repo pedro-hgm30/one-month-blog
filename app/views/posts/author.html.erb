@@ -14,10 +14,8 @@
   <div class="media mt-4 px-1">
     <div class=" d-flex z-depth-1 mr-3"><%= gravatar_image_tag(@post_author.email.gsub('spam', @author ), :alt => @author) %> </div>
     <div class="media-body">
-      <h5 class="font-weight-bold mt-0">
-        I'm <%= @author %>
-      </h5>
-       <h6> And here's what've got for you. </h6>
+      <h4 class="h4-responsive font-weight-bold">I'm <%= @author %></h4>
+       <h5 class="h5-responsive"> And here's what've got for you. </h5>
     </div>
   </div>
 
@@ -25,21 +23,21 @@
 <!--Section: Author Box-->
 
 <% @paginated_authors.each do |post| %>
-<br>
-<a href="<%= post_path(post) %>">
-<h2 class="font-weight-bold text-body">
-  <%= post.title%>
-</h2>
-</a>
-<h6>Posted by
-<% if post.author != nil %>
-  <a class="font-weight-bold dark-grey-text" href="<%= author_path(post.author.name) %>"><%= post.author.name %></a>
-<% else %>
-    <a class="font-weight-bold dark-grey-text" href="#"> This Author no longer exist </a>
-<% end %>
-<%= post.created_at.strftime("%d, %b %Y") %></h6>
-
-<hr>
+  <br>
+  <a href="<%= post_path(post) %>">
+  <h2 class="h2-responsive font-weight-bold text-body">
+    <%= post.title%>
+  </h2>
+  </a>
+  <h6>Posted by
+    <% if post.author != nil %>
+      <a class="font-weight-bold dark-grey-text" href="<%= author_path(post.author.name) %>"><%= post.author.name %></a>
+    <% else %>
+        <a class="font-weight-bold dark-grey-text" href="#"> This Author no longer exist </a>
+    <% end %>
+    <%= post.created_at.strftime("%d, %b %Y") %>
+  </h6>
+  <hr>
 <% end %>
 <br>
 <%= will_paginate @paginated_authors, class: "font-weight-bold text-center pagination, ", previous_label: "Newer", next_label: "Older"%>
