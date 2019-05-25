@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get ':author', to: 'posts#author', as: 'author'
   get 'author/manage', to: 'authors#manage'
   match 'authors/:id' => 'authors#destroy', :via => :delete, :as => :admin_destroy_author
+  match 'users/:id' => 'authors#delete', :via => :delete, :as => :admin_destroy_user
   root 'posts#index'
 end
  

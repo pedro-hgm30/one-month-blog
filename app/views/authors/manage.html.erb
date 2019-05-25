@@ -1,4 +1,5 @@
 <% provide(:page_title, "Management") %>
+
 <h2 class="text-center">Authors</h2>
 <% @authors.each do |author| %>
 
@@ -12,6 +13,17 @@
          <%= button_to "Delete", admin_destroy_author_path(author), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-sm btn-danger" %>
       </div>
    <% end %>
+<% end %> 
 
-<% end %>
+<hr>
 
+<h2 class="text-center">Users</h2>
+<% @users.each do |user| %>
+
+   <div class="form-group">
+      <%= user.name %>
+      <%= button_to "Delete", admin_destroy_user_path(user), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-sm btn-danger" %>
+   </div>
+  
+
+<% end %> 
