@@ -1,7 +1,6 @@
 class Author < ApplicationRecord
   has_many :posts
   has_many :comments 
-  has_many :users, through: :comments, dependent: :destroy
   validates :name, presence: :true, uniqueness: { case_sensitive: false }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
