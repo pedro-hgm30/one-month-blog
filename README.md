@@ -41,5 +41,5 @@ I added other features such as an `admin` that can manage the blog, `users` that
 
 I used the `Active Record Associations` to create the logic behind the comments 
 
-#### Besides the standard requirements and also de bonus requirements I made many other functionalities, so feel free to check the code or the [live version](https://theoneblog.herokuapp.com) if you want
+#### Besides the standard requirements and also de bonus requirements I made many other functionalities, so feel free to check the code or the [live version](https://theoneblog.herokuapp.com) if you want!
 
