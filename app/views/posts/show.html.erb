@@ -6,7 +6,7 @@
             <h1 class="display-4 text-center"><%= @post.title %></h1>
             <h5 class="h5-responsive text-center">Posted by
               <% if @post.author != nil %>
-                <a class="font-weight-bold dark-grey-text" href="<%= author_path(@post.author.name) %>"><%= @post.author.name %></a>
+                <%= link_to @post.author.name, author_path(@post.author.id), :class => "font-weight-bold dark-grey-text"  %>  
               <% else %>
                   <a class="font-weight-bold dark-grey-text" href="#"> This Author no longer exist </a>
               <% end %> <%= @post.created_at.strftime("%b %d, %Y") %>

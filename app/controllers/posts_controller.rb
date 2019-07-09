@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   
   before_action :set_search, only: [:show, :edit, :update, :destroy, :author, :new, :create, :about, :contact] 
 
-  before_action :find_posts_by_author, :validates_author, only: [:author]
+  # before_action :find_posts_by_author, :validates_author, only: [:author]
   
   def index
     if params[:search]
@@ -57,6 +57,16 @@ class PostsController < ApplicationController
   end
 
   def author 
+    @author = Author.find(params[:id])
+
+    if @author
+      author_posts = Post.where("author_id = ?", @author)
+      @paginated_posts = author_posts.paginate(page: params[:page], per_page: 5)
+      render :author
+    else
+      render file: "#{Rails.root}/public/404.html" , status: 404
+    end
+
   end
 
   def about
