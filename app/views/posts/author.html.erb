@@ -1,4 +1,4 @@
-<% provide(:page_title, "#{@author}") %>
+<% provide(:page_title, "#{@author.name}") %>
 
 <!--Section: Author Box-->
 <section class="my-5">
@@ -7,14 +7,14 @@
   <div class="card-header border-0 font-weight-bold d-flex justify-content-between">
     <p class="mr-4 mb-0">About the author</p>
     <ul class="list-unstyled list-inline mb-0">
-      <li class="list-inline-item"><div class="mr-3"><%= fa_icon 'envelope' %> <%= mail_to @post_author.email, "Send Message", subject: "Hi! Please include your name and email address", class: "text-body" %></div></li>
+      <li class="list-inline-item"><div class="mr-3"><%= fa_icon 'envelope' %> <%= mail_to @author.email, "Send Message", subject: "Hi! Please include your name and email address", class: "text-body" %></div></li>
     </ul>
   </div>
 
   <div class="media mt-4 px-1">
-    <div class=" d-flex z-depth-1 mr-3"><%= gravatar_image_tag(@post_author.email.gsub('spam', @author ), :alt => @author) %> </div>
+    <div class=" d-flex z-depth-1 mr-3"><%= gravatar_image_tag(@author.email.gsub('spam', @author.name ), :alt => @author.name) %> </div>
     <div class="media-body">
-      <h4 class="h4-responsive font-weight-bold">I'm <%= @author %></h4>
+      <h4 class="h4-responsive font-weight-bold">I'm <%= @author.name %></h4>
        <h5 class="h5-responsive"> And here's what've got for you. </h5>
     </div>
   </div>
@@ -22,7 +22,7 @@
 </section>
 <!--Section: Author Box-->
 
-<% @paginated_authors.each do |post| %>
+<% @paginated_posts.each do |post| %>
   <br>
   <a href="<%= post_path(post) %>">
   <h2 class="h2-responsive font-weight-bold text-body">
@@ -31,7 +31,7 @@
   </a>
   <h6>Posted by
     <% if post.author != nil %>
-      <a class="font-weight-bold dark-grey-text" href="<%= author_path(post.author.name) %>"><%= post.author.name %></a>
+      <%= link_to post.author.name, author_path(post.author.id), :class => "font-weight-bold dark-grey-text"  %>  
     <% else %>
         <a class="font-weight-bold dark-grey-text" href="#"> This Author no longer exist </a>
     <% end %>
@@ -40,5 +40,5 @@
   <hr>
 <% end %>
 <br>
-<%= will_paginate @paginated_authors, class: "font-weight-bold text-center pagination, ", previous_label: "Newer", next_label: "Older"%>
+<%= will_paginate @paginated_posts, class: "font-weight-bold text-center pagination, ", previous_label: "Newer", next_label: "Older"%>
 <hr class="col-sm-2">
