@@ -4,11 +4,9 @@
 
 <% @posts.each do |post| %>
 <br>
-<a href="<%= post_path(post) %>">
-<h2 class="h2-responsive font-weight-bold text-body">
-  <%= post.title %>
-</h2>
-</a>
+
+<%= link_to post.title, post_path(post), :class => "h2-responsive font-weight-bold text-body"  %>
+
 <h6>Posted by
 <% if post.author != nil %>
   <%= link_to post.author.name, author_path(post.author.id), :class => "font-weight-bold dark-grey-text"  %>  
